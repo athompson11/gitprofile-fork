@@ -16,6 +16,9 @@ jobs:
       uses: webfactory/ssh-agent@v0.8.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        
+    - name: Add SSH Key to Known Hosts
+      run: ssh-keyscan -H ssh.abbie.dev >> ~/.ssh/known_hosts
 
     - name: Deploy to Local Webserver
       run: |
